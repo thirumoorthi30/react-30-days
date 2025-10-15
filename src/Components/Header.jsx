@@ -1,12 +1,9 @@
 import React from "react";
 
-function Header(props) {
-  console.log(props); // will receive data from another component
+function Header() {
   return (
     <header className="bg-green-600 text-white py-4 shadow-md">
-      <h1 className="text-2xl font-bold text-center tracking-wide">
-        PROJECTS
-      </h1>
+      <h1 className="text-2xl font-bold text-center tracking-wide">REACT 30 DAYS PROJECTS</h1>
     </header>
   );
 }
