@@ -4,7 +4,7 @@ import Header from './Components/Header';
 import Footer from './Components/Footer';
 import Content from './Components/Content';
 import ProfileCard from './Components/ProfileCard';
-//import TodoList from './Components/TodoList';
+
 
 function App() {
   const [selectedProject, setSelectedProject] = useState('profile');
@@ -55,7 +55,7 @@ function App() {
       <main className="flex-1 flex flex-col items-center justify-center p-6 bg-gray-100">
         {selectedProject === 'profile' && (
           <>
-            {/* <Content /> */}
+            
             <div className="flex flex-wrap justify-center gap-6 mt-6">
               {profiles.map((profile, index) => (
                 <ProfileCard key={index} {...profile} />
@@ -64,7 +64,7 @@ function App() {
           </>
         )}
 
-        {/* {selectedProject === 'todo' && <TodoList />} */}
+        {selectedProject === 'todo' && <Content />}
       </main>
 
       <Footer />
