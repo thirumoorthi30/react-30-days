@@ -1,6 +1,9 @@
 import React from "react";
+import CounterApp from "./CounterApp copy";
 
 const Content = () => {
+
+
 
   let user = "testing";
 
@@ -18,6 +21,8 @@ const Content = () => {
     console.log(user);
   }
 
+
+
   return (
     <main className="flex flex-col items-center justify-center p-8 bg-gray-100 min-h-[60vh]">
       <h1 className="bg-red-500 text-white px-4 py-2 rounded-lg shadow-lg text-xl font-semibold">
@@ -25,6 +30,7 @@ const Content = () => {
       </h1>
       <button onClick={printSomething}>Click</button>
       <button onClick={ (e) => {printSomethingOne(e)}}>Click me 1</button>
+      <CounterApp copy />
     </main>
 
   );
