@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 const projects = [
   { day: "01", title: "Profile Card", path: "/profile-card" },
   { day: "02", title: "Counter App", path: "/counter-app" },
-  { day: "03", title: "Todo List", path: "/todo-list" },
+  { day: "03", title: "Practice App", path: "/practice-app" },
+  { day: "04", title: "Todo List", path: "/todo-list" },
 ];
 
 export default function Home() {
