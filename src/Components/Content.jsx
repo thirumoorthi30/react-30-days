@@ -1,5 +1,6 @@
 import React from "react";
 import CounterApp from "./CounterApp copy";
+import Shop from "./Shop";
 
 const Content = () => {
 
@@ -31,6 +32,7 @@ const Content = () => {
       <button onClick={printSomething}>Click</button>
       <button onClick={ (e) => {printSomethingOne(e)}}>Click me 1</button>
       <CounterApp copy />
+      <Shop />
     </main>
 
   );
