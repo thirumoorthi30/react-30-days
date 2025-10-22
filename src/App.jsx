@@ -5,6 +5,10 @@ import ProfileCardPage from "./Components/ProfileCardPage";
 import Practice from "./Components/Content";
 import CounterApp from "./Components/CounterApp";
 import TodoList from "./Components/TodoList";
+import Product from "./Components/Product";
+import ProductDetails1 from "./Components/ProductDetails1";
+import ProductList from "./Components/ProductList";
+import DigitalClock from "./Components/DigitalClock";
 
 export let userContext = createContext();
 
@@ -20,11 +24,17 @@ console.log(userContext);
        <userContext.Provider value ={ {user} }>
       <Routes>
        
-        <Route path="/" element={<Home />} />
+        <Route path="/home" element={<Home />} />
         <Route path="/profile-card" element={<ProfileCardPage />} />
         <Route path="/counter-app" element={<CounterApp />} />
-        <Route path="/practice-app" element={<Practice />} />
+        <Route path="/practice-app/:name" element={<Practice />} />
         <Route path="/todo-list" element={<TodoList />} />
+        <Route path="/product" element={<Product />} >
+          <Route index element={<ProductDetails1 />} />
+          <Route path="details" element={<ProductDetails1 />} />
+          <Route path="list" element={<ProductList />} />
+        </Route>
+        <Route path="/digital-clock" element = {<DigitalClock />} />
        
       </Routes>
        </userContext.Provider>
