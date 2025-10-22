@@ -1,10 +1,14 @@
 import { Link } from "react-router-dom";
 
+let user = "Thiru";
+
 const projects = [
   { day: "01", title: "Profile Card", path: "/profile-card" },
   { day: "02", title: "Counter App", path: "/counter-app" },
-  { day: "03", title: "Practice App", path: "/practice-app" },
+  { day: "03", title: "Practice App", path: `/practice-app/${user}` },
   { day: "04", title: "Todo List", path: "/todo-list" },
+  { day: "05", title: "Product", path: "/product" },
+  {day: "06", title: "Digital Clock", path: "/digital-clock"},
 ];
 
 export default function Home() {
@@ -16,7 +20,7 @@ export default function Home() {
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 max-w-5xl mx-auto">
         {projects.map((p) => (
           <Link
-            key={p.day}
+            key={p.day} 
             to={p.path}
             className="block p-6 bg-white shadow-md rounded-xl hover:shadow-xl hover:-translate-y-1 transition transform duration-300"
           >
