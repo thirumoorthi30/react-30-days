@@ -24,7 +24,7 @@ console.log(userContext);
        <userContext.Provider value ={ {user} }>
       <Routes>
        
-        <Route path="/home" element={<Home />} />
+        <Route path="/" element={<Home />} />
         <Route path="/profile-card" element={<ProfileCardPage />} />
         <Route path="/counter-app" element={<CounterApp />} />
         <Route path="/practice-app/:name" element={<Practice />} />
