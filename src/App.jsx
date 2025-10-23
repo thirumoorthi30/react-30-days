@@ -9,6 +9,8 @@ import Product from "./Components/Product";
 import ProductDetails1 from "./Components/ProductDetails1";
 import ProductList from "./Components/ProductList";
 import DigitalClock from "./Components/DigitalClock";
+import NavBar from "./Components/NavBar";
+import JokeApp from "./Components/JokeApp";
 
 export let userContext = createContext();
 
@@ -22,6 +24,7 @@ console.log(userContext);
   return (
     <BrowserRouter basename="/react-30days">
        <userContext.Provider value ={ {user} }>
+        <NavBar />
       <Routes>
        
         <Route path="/" element={<Home />} />
@@ -30,11 +33,12 @@ console.log(userContext);
         <Route path="/practice-app/:name" element={<Practice />} />
         <Route path="/todo-list" element={<TodoList />} />
         <Route path="/product" element={<Product />} >
-          <Route index element={<ProductDetails1 />} />
+          <Route index element={<ProductList />} />
           <Route path="details" element={<ProductDetails1 />} />
           <Route path="list" element={<ProductList />} />
         </Route>
         <Route path="/digital-clock" element = {<DigitalClock />} />
+        <Route path="/joke-app" element = {<JokeApp />} />
        
       </Routes>
        </userContext.Provider>

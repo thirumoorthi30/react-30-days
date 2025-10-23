@@ -56,13 +56,13 @@ const TodoList = () => {
 
   return (
     <Layout>
-    <div className="min-h-[80vh] flex items-center justify-center bg-gradient-to-r from-blue-100 via-green-100 to-blue-50 p-6">
+    <div className="flex justify-center bg-gradient-to-r from-blue-100 via-green-100 to-blue-50 py-11">
       <div className="p-6 w-full max-w-md bg-white rounded-2xl shadow-lg border border-gray-100 transition-transform transform hover:scale-[1.01]">
         <h2 className="text-3xl font-bold mb-6 text-center text-blue-700">
           Todo List
         </h2>
 
-        <div className="flex gap-3 mb-6">
+        <div className="flex gap-3 mb-8">
           <input
             type="text"
             value={newTodo}
