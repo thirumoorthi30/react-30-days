@@ -9,11 +9,12 @@ const projects = [
   { day: "04", title: "Todo List", path: "/todo-list" },
   { day: "05", title: "Product", path: "/product" },
   {day: "06", title: "Digital Clock", path: "/digital-clock"},
+  {day: "07", title: "Joke App", path: "/joke-app"},
 ];
 
-export default function Home() {
+export default function Home() {  
   return (
-    <div className="min-h-screen bg-gray-50 p-6">
+    <div className="min-h-[75vh] bg-gray-50 p-6">
       <h1 className="text-4xl font-bold text-center mb-10 text-blue-700">
         🚀 React 30-Day Challenge
       </h1>
