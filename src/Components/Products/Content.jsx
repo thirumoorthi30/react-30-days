@@ -1,5 +1,5 @@
 import React from "react";
-import CounterApp from "./CounterApp copy";
+import CounterApp from "../CounterApp/CounterApp copy";
 import Shop from "./Shop";
 import { useParams } from "react-router-dom";
 

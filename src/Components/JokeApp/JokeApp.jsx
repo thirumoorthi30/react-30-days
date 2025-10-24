@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Layout from "./Layout";
+import Layout from "../Layout/Layout";
 
 function JokeApp() {
   const [joke, setJoke] = useState("");
@@ -8,7 +8,12 @@ function JokeApp() {
   const fetchJoke = () => {
     fetch("https://official-joke-api.appspot.com/random_joke", {method: "GET"})
     .then( (response) => {
-        return response.json();
+        if(response.ok){
+            return response.json();
+        }
+        else{
+            throw new Error("Something went wrong...");
+        }
     })
     .then((data) => {
         setJoke(data);

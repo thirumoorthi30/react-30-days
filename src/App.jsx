@@ -1,16 +1,17 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { createContext, useState } from "react";
-import Home from "./Components/Home";
-import ProfileCardPage from "./Components/ProfileCardPage";
-import Practice from "./Components/Content";
-import CounterApp from "./Components/CounterApp";
-import TodoList from "./Components/TodoList";
-import Product from "./Components/Product";
-import ProductDetails1 from "./Components/ProductDetails1";
-import ProductList from "./Components/ProductList";
-import DigitalClock from "./Components/DigitalClock";
-import NavBar from "./Components/NavBar";
-import JokeApp from "./Components/JokeApp";
+import Home from "./Components/Layout/Home";
+import ProfileCardPage from "./Components/Profilepage/ProfileCardPage";
+import Practice from "./Components/Products/Content";
+import CounterApp from "./Components/CounterApp/CounterApp";
+import TodoList from "./Components/TodoList/TodoList";
+import Product from "./Components/Products/Product";
+import ProductDetails1 from "./Components/Products/ProductDetails1";
+import ProductList from "./Components/Products/ProductList";
+import DigitalClock from "./Components/DigitalClock/DigitalClock";
+import NavBar from "./Components/Layout/NavBar";
+import JokeApp from "./Components/JokeApp/JokeApp";
+import NewProducts from "./Components/Products/NewProducts";
 
 export let userContext = createContext();
 
@@ -37,6 +38,7 @@ console.log(userContext);
           <Route path="details" element={<ProductDetails1 />} />
           <Route path="list" element={<ProductList />} />
         </Route>
+        <Route path="/new-product" element = {<NewProducts />} />
         <Route path="/digital-clock" element = {<DigitalClock />} />
         <Route path="/joke-app" element = {<JokeApp />} />
        

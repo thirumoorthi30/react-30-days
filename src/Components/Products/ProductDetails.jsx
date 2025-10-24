@@ -1,6 +1,6 @@
 import React, {useContext} from "react";
 import PropTypes from "prop-types";
-import {userContext} from "../App";
+import {userContext} from "../../App";
 
 const ProductDetails = ({deepName = "DefaultName", deepPrice = 20000, deepDescription = "iphone india"}) => {
 
