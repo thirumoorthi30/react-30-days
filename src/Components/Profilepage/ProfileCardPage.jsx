@@ -1,5 +1,5 @@
 import ProfileCard from "./ProfileCard";
-import Layout from "./Layout";
+import Layout from "../Layout/Layout";
 
 function ProfileCardPage() {
   const profiles = [

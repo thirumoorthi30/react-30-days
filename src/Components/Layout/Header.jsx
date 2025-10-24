@@ -1,7 +1,7 @@
 import React, { use } from "react";
 
 import { useContext   } from "react";
-import { userContext } from "../App";
+import { userContext } from "../../App";
 
 function Header() {
 
