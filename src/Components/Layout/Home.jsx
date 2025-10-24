@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import useFetch from "../Custom-Hook/useFetch";
 
 let user = "Thiru";
 
@@ -8,11 +9,13 @@ const projects = [
   { day: "03", title: "Practice App", path: `/practice-app/${user}` },
   { day: "04", title: "Todo List", path: "/todo-list" },
   { day: "05", title: "Product", path: "/product" },
+  { day: "05.01", title: "Add Product", path: "/new-product" },
   {day: "06", title: "Digital Clock", path: "/digital-clock"},
   {day: "07", title: "Joke App", path: "/joke-app"},
 ];
 
 export default function Home() {  
+
   return (
     <div className="min-h-[75vh] bg-gray-50 p-6">
       <h1 className="text-4xl font-bold text-center mb-10 text-blue-700">

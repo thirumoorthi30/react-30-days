@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { userContext } from "../App";
+import { userContext } from "../../App";
 
 function Footer() {
 
