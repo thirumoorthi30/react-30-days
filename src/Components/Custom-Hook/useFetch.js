@@ -38,7 +38,7 @@ function useFetch(url){
 
       }, []);
 
-      return {products, error, loading};
+      return {products, error, loading, setProducts};
 
 }
 

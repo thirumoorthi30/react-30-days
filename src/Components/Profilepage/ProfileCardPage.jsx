@@ -12,7 +12,7 @@ function ProfileCardPage() {
 
   return (
     <Layout>
-      <div className="min-h-[75vh] flex flex-wrap justify-center items-center gap-6 p-10">
+      <div className="min-h-[84.50vh] flex flex-wrap justify-center items-center gap-6 p-10">
         {profiles.map((profile, index) => (
           <ProfileCard key={index} {...profile} />
         ))}
