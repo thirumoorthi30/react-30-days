@@ -20,7 +20,7 @@ export default function DigitalClock() {
 
   return (
     <Layout>
-      <div className="flex items-center justify-center min-h-[75vh] bg-gradient-to-r from-blue-100 to-green-100">
+      <div className="flex items-center justify-center min-h-[84.50vh] bg-gradient-to-r from-blue-100 to-green-100">
         <div
           className="text-6xl font-bold text-blue-700 bg-white shadow-2xl rounded-3xl px-12 py-8 
                      hover:scale-110 transition-transform duration-500 text-center"
