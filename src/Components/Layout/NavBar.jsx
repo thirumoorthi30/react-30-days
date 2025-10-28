@@ -47,7 +47,7 @@ export default function NavBar() {
               className="text-2xl hover:scale-110 transition-transform"
               title={theme === "light" ? "Switch to Dark" : "Switch to Light"}
             >
-              {theme === "light" ? "light_mode" : "dark_mode"}
+              {theme === "light" ? "dark" : "light"}
             </button>
 
             <div className="relative">

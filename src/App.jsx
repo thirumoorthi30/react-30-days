@@ -31,7 +31,9 @@ function AppContent() {
    const [theme, setTheme] = useState("light");
   const navigate = useNavigate();
 
-  const toggleTheme = () => setTheme(prev => (prev === "light" ? "dark" : "light"));
+  const toggleTheme = () => {
+    setTheme( (prev) => (prev === "light" ? "dark" : "light") )
+  }
 
   const handleLogin = (email) => {
     setUser({ email});
