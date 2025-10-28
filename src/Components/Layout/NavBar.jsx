@@ -1,10 +1,12 @@
 import { Link, useLocation } from "react-router-dom";
 import { useContext, useState } from "react";
 import { userContext } from "../../App";
+import { themeContext } from "../../App";
 
 let userLabel = "Thiru";
 
 export default function NavBar() {
+  const { theme, toggleTheme } = useContext(themeContext);
   const location = useLocation();
   const { user, handleLogout } = useContext(userContext);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -39,6 +41,14 @@ export default function NavBar() {
                 Home
               </Link>
             )}
+
+            <button
+              onClick={toggleTheme}
+              className="text-2xl hover:scale-110 transition-transform"
+              title={theme === "light" ? "Switch to Dark" : "Switch to Light"}
+            >
+              {theme === "light" ? "light_mode" : "dark_mode"}
+            </button>
 
             <div className="relative">
               {user ? (
