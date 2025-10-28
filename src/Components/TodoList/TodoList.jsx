@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd";
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
 import Layout from "../Layout/Layout";
 
@@ -56,114 +55,68 @@ const TodoList = () => {
   const future = items.filter((item) => !item.checked && item.plannedFor !== "Today");
   const completed = items.filter((item) => item.checked);
 
-  const handleDragEnd = (result) => {
-    const { destination, source, draggableId } = result;
-    if (!destination) return;
-
-    if (
-      destination.droppableId === source.droppableId &&
-      destination.index === source.index
-    )
-      return;
-
-    const draggedItem = items.find((item) => item.id === parseInt(draggableId));
-
-    if (!draggedItem) return;
-
-    let updatedItem = { ...draggedItem };
-
-    if (destination.droppableId === "completed") {
-      updatedItem.checked = true;
-    } else if (destination.droppableId === "inProgress") {
-      updatedItem.checked = false;
-      updatedItem.plannedFor = "Today";
-    } else if (destination.droppableId === "future") {
-      updatedItem.checked = false;
-      updatedItem.plannedFor = "Tomorrow";
-    }
-
-    setItems((prev) =>
-      prev.map((item) => (item.id === updatedItem.id ? updatedItem : item))
-    );
-  };
-
-  const renderList = (list, droppableId, title) => (
-    <Droppable droppableId={droppableId}>
-      {(provided) => (
-        <div
-          {...provided.droppableProps}
-          ref={provided.innerRef}
-          className="flex-1 bg-white rounded-lg shadow-md p-4 mx-2 min-h-[60vh]"
-        >
-          <h3 className="text-xl font-semibold mb-3 text-center">{title}</h3>
-          {list.length === 0 ? (
-            <p className="text-gray-400 italic text-center">No todos here</p>
-          ) : (
-            list.map((item, index) => (
-              <Draggable key={item.id.toString()} draggableId={item.id.toString()} index={index}>
-                {(provided) => (
-                  <div
-                    ref={provided.innerRef}
-                    {...provided.draggableProps}
-                    {...provided.dragHandleProps}
-                    className="flex justify-between items-center p-3 mb-3 border border-gray-200 rounded-lg bg-gray-50 hover:bg-blue-50 transition-all duration-200 shadow-sm"
-                  >
-                    <div className="flex items-center space-x-3">
-                      <input
-                        type="checkbox"
-                        checked={item.checked}
-                        onChange={() => handleChecked(item.id)}
-                        className="w-5 h-5 text-blue-600 border-gray-300 rounded"
-                      />
-                      {item.isEditing ? (
-                        <input
-                          type="text"
-                          value={item.title}
-                          onChange={(e) => handleInEdit(e, item.id)}
-                          onKeyDown={(e) => e.key === "Enter" && handleEditSave(item.id)}
-                          className="border-b border-gray-300 focus:outline-none text-gray-800 text-lg"
-                          autoFocus
-                        />
-                      ) : (
-                        <span
-                          className={`text-gray-800 text-lg ${
-                            item.checked ? "line-through text-gray-400" : ""
-                          }`}
-                        >
-                          {item.title}
-                        </span>
-                      )}
-                    </div>
-                    <div className="flex gap-4 text-lg">
-                      {item.isEditing ? (
-                        <button
-                          className="text-green-600 font-semibold hover:text-green-700"
-                          onClick={() => handleEditSave(item.id)}
-                        >
-                          Save
-                        </button>
-                      ) : (
-                        !item.checked && (
-                          <FaEdit
-                            className="text-green-500 hover:text-green-700 cursor-pointer"
-                            onClick={() => handleEditClick(item.id)}
-                          />
-                        )
-                      )}
-                      <FaTrashAlt
-                        className="text-red-500 hover:text-red-700 cursor-pointer"
-                        onClick={() => handleDelete(item.id)}
-                      />
-                    </div>
-                  </div>
-                )}
-              </Draggable>
-            ))
-          )}
-          {provided.placeholder}
-        </div>
+  const renderList = (list, title) => (
+    <div className="flex-1 bg-white rounded-lg shadow-md p-4 mx-2 min-h-[60vh]">
+      <h3 className="text-xl font-semibold mb-3 text-center">{title}</h3>
+      {list.length === 0 ? (
+        <p className="text-gray-400 italic text-center">No todos here</p>
+      ) : (
+        list.map((item) => (
+          <div
+            key={item.id}
+            className="flex justify-between items-center p-3 mb-3 border border-gray-200 rounded-lg bg-gray-50 hover:bg-blue-50 transition-all duration-200 shadow-sm"
+          >
+            <div className="flex items-center space-x-3">
+              <input
+                type="checkbox"
+                checked={item.checked}
+                onChange={() => handleChecked(item.id)}
+                className="w-5 h-5 text-blue-600 border-gray-300 rounded"
+              />
+              {item.isEditing ? (
+                <input
+                  type="text"
+                  value={item.title}
+                  onChange={(e) => handleInEdit(e, item.id)}
+                  onKeyDown={(e) => e.key === "Enter" && handleEditSave(item.id)}
+                  className="border-b border-gray-300 focus:outline-none text-gray-800 text-lg"
+                  autoFocus
+                />
+              ) : (
+                <span
+                  className={`text-gray-800 text-lg ${
+                    item.checked ? "line-through text-gray-400" : ""
+                  }`}
+                >
+                  {item.title}
+                </span>
+              )}
+            </div>
+            <div className="flex gap-4 text-lg">
+              {item.isEditing ? (
+                <button
+                  className="text-green-600 font-semibold hover:text-green-700"
+                  onClick={() => handleEditSave(item.id)}
+                >
+                  Save
+                </button>
+              ) : (
+                !item.checked && (
+                  <FaEdit
+                    className="text-green-500 hover:text-green-700 cursor-pointer"
+                    onClick={() => handleEditClick(item.id)}
+                  />
+                )
+              )}
+              <FaTrashAlt
+                className="text-red-500 hover:text-red-700 cursor-pointer"
+                onClick={() => handleDelete(item.id)}
+              />
+            </div>
+          </div>
+        ))
       )}
-    </Droppable>
+    </div>
   );
 
   return (
@@ -171,13 +124,11 @@ const TodoList = () => {
       <div className="min-h-[84.50vh] flex flex-col items-center p-10 bg-gradient-to-r from-blue-100 via-green-100 to-blue-50 w-full">
         <h2 className="text-3xl font-bold mb-8 text-blue-700">Todo List</h2>
 
-        <DragDropContext onDragEnd={handleDragEnd}>
-          <div className="flex justify-around w-full">
-            {renderList(inProgress, "inProgress", "In Progress")}
-            {renderList(future, "future", "Future")}
-            {renderList(completed, "completed", "Completed")}
-          </div>
-        </DragDropContext>
+        <div className="flex justify-around w-full">
+          {renderList(inProgress, "In Progress")}
+          {renderList(future, "Future")}
+          {renderList(completed, "Completed")}
+        </div>
 
         <button
           className="fixed bottom-8 right-8 w-14 h-14 rounded-full bg-blue-600 text-white text-3xl font-bold shadow-lg hover:bg-green-700 transition"
