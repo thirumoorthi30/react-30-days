@@ -15,8 +15,10 @@ import NewProducts from "./Components/Products/NewProducts";
 import UpdateProduct from "./Components/Products/UpdateProduct";
 import Login from "./Components/Auth/Login";
 import Signup from "./Components/Auth/Signup";
+import Weather from "./Components/Weather/Weather";
 
 export const userContext = createContext();
+export const themeContext = createContext();
 
 function AppContent() {
   const [user, setUser] = useState({
@@ -26,7 +28,10 @@ function AppContent() {
     phone: "123-456-7890"
   });
 
+   const [theme, setTheme] = useState("light");
   const navigate = useNavigate();
+
+  const toggleTheme = () => setTheme(prev => (prev === "light" ? "dark" : "light"));
 
   const handleLogin = (email) => {
     setUser({ email});
@@ -45,6 +50,7 @@ function AppContent() {
 
   return (
     <userContext.Provider value={{ user, handleLogin, handleSignup, handleLogout }}>
+      <themeContext.Provider value = {{theme, toggleTheme}}>
       {isAuth && <NavBar />}
       <Routes>
         {!isAuth ? (
@@ -68,10 +74,12 @@ function AppContent() {
             <Route path="/update-product/:id" element={<UpdateProduct />} />
             <Route path="/digital-clock" element={<DigitalClock />} />
             <Route path="/joke-app" element={<JokeApp />} />
+            <Route path="/weather-app" element={<Weather />} />
             <Route path="*" element={<Navigate to="/" />} />
           </>
         )}
       </Routes>
+      </themeContext.Provider>
     </userContext.Provider>
   );
 }
