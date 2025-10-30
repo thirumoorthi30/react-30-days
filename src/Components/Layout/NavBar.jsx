@@ -1,23 +1,26 @@
 import { Link, useLocation } from "react-router-dom";
 import { useContext, useState } from "react";
-import { userContext } from "../../App";
-import { ThemeContext } from "../../Hook/ThemeProvider";
+import { userContext, themeContext } from "../../App"; // ✅ Import both contexts
 
 let userLabel = "Thiru";
 
 export default function NavBar() {
-  const { theme, toggleTheme } = useContext(ThemeContext);
-  const location = useLocation();
+  const { theme, toggleTheme } = useContext(themeContext);
   const { user, handleLogout } = useContext(userContext);
+  const location = useLocation();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const isActive = (path) => location.pathname === path;
   const getInitial = (name) => name?.charAt(0)?.toUpperCase() || "U";
 
+  const isDark = theme === "dark";
+
   return (
     <nav className="bg-violet-800/90 backdrop-blur-md sticky top-0 z-50 shadow-md">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16 items-center">
+
+          {/* Logo */}
           <Link
             to="/"
             className="text-white font-bold text-xl sm:text-2xl hover:text-yellow-300 transition"
@@ -26,6 +29,8 @@ export default function NavBar() {
           </Link>
 
           <div className="flex items-center space-x-6">
+
+            {/* Home Link */}
             {isActive("/") ? (
               <button
                 hidden
@@ -42,14 +47,22 @@ export default function NavBar() {
               </Link>
             )}
 
+            {/* ✅ Theme Toggle Switch */}
             <button
               onClick={toggleTheme}
-              className="text-2xl hover:scale-110 transition-transform"
+              className="w-14 h-7 flex items-center bg-gray-300 dark:bg-gray-700 rounded-full p-1 relative transition duration-300"
               title={theme === "light" ? "Dark Mode" : "Light Mode"}
             >
-              {theme === "light" ? "🌙" : "☀️"}
+              <div
+                className={`w-6 h-6 rounded-full flex items-center justify-center bg-yellow-400 dark:bg-gray-300 text-black transition-all duration-500 transform ${
+                  isDark ? "translate-x-7 rotate-180" : "translate-x-0 rotate-0"
+                }`}
+              >
+                {isDark ? "🌙" : "☀️"}
+              </div>
             </button>
 
+            {/* User Profile / Dropdown */}
             <div className="relative">
               {user ? (
                 <>
@@ -65,6 +78,7 @@ export default function NavBar() {
                       <div className="px-4 py-2 text-gray-800 border-b font-medium">
                         {user.name || userLabel}
                       </div>
+
                       <Link
                         to="/profile"
                         className="block px-4 py-2 text-gray-800 hover:bg-gray-200"
@@ -72,6 +86,7 @@ export default function NavBar() {
                       >
                         Profile
                       </Link>
+
                       <button
                         onClick={handleLogout}
                         className="w-full text-left px-4 py-2 text-gray-800 hover:bg-gray-200"
@@ -98,6 +113,7 @@ export default function NavBar() {
                 </div>
               )}
             </div>
+
           </div>
         </div>
       </div>

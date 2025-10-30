@@ -46,9 +46,9 @@ const Weather = () => {
   return (
     <Layout>
       <div
-        className={`min-h-[84.50vh] flex items-center justify-center p-4 transition-all
+        className={`min-h-[93.50vh] flex items-center justify-center p-4 transition-all
         ${isDark ? "bg-gray-900" : "bg-bgColor"}
-      `}
+        `}
       >
         <div
           className={`shadow-lg rounded-xl p-6 w-full max-w-md transition-all 
