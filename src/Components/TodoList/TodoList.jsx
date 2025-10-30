@@ -4,7 +4,7 @@ import Layout from "../Layout/Layout";
 import { themeContext } from "../../App";
 
 const TodoList = () => {
-  const { theme } = useContext(themeContext);
+   const { theme } = useContext(themeContext);
   const isDark = theme === "dark";
 
   const [items, setItems] = useState([
@@ -46,7 +46,7 @@ const TodoList = () => {
 
   const renderList = (list, title) => (
     <div
-      className={`flex-1 rounded-lg shadow-md p-4 mx-2 min-h-[60vh]
+      className={`flex-1 rounded-lg shadow-md p-4 mx-2 min-h-[80vh]
       ${isDark ? "bg-gray-800 text-white" : "bg-white text-gray-900"}`}
     >
       <h3 className="text-xl font-semibold mb-3 text-center">{title}</h3>

@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Layout from "../Layout/Layout";
+import { themeContext } from "../../App";
 
 const CounterApp = () => {
   const [count, setCount] = useState(0);
@@ -13,10 +14,16 @@ const CounterApp = () => {
 
   const resetClick = () => setCount(0);
 
+  const { theme } = useContext(themeContext);
+  const isDark = theme === "dark";
+
   return (
     <Layout>
-      <div className="flex flex-col items-center justify-center min-h-[75vh] bg-[var(--bg)] text-[var(--text)]">
-        <div className="bg-[var(--bg)] border border-gray-300 dark:border-gray-700 shadow-lg rounded-2xl p-8 text-center w-80 transition-colors">
+      <div
+        className={`flex flex-col items-center justify-center min-h-[94vh] 
+      ${isDark ? "bg-gray-900" : "bg-bgColor"}`}
+      >
+        <div className=" border border-gray-300 dark:border-gray-700 shadow-lg rounded-2xl p-8 text-center w-80 transition-colors text-blue-600 dark:text-green-400">
           <h1 className="text-3xl font-bold mb-6">Counter App</h1>
 
           <p
