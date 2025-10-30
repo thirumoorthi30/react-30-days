@@ -6,23 +6,14 @@ function JokeApp() {
   const [error, setError] = useState("");
 
   const fetchJoke = () => {
-    fetch("https://official-joke-api.appspot.com/random_joke", {method: "GET"})
-    .then( (response) => {
-        if(response.ok){
-            return response.json();
-        }
-        else{
-            throw new Error("Something went wrong...");
-        }
-    })
-    .then((data) => {
-        setJoke(data);
-        console.log(data);
-    })
-    .catch( (error) => {
-        setError(error.message);
-    })
-  }
+    fetch("https://official-joke-api.appspot.com/random_joke")
+      .then((response) => {
+        if (response.ok) return response.json();
+        throw new Error("Something went wrong...");
+      })
+      .then((data) => setJoke(data))
+      .catch((error) => setError(error.message));
+  };
 
   useEffect(() => {
     fetchJoke();
@@ -30,21 +21,31 @@ function JokeApp() {
 
   return (
     <Layout>
-    <div className="flex flex-col items-center justify-center min-h-[84.50vh] bg-gradient-to-br from-yellow-100 to-orange-200 text-center p-6">
-      <h1 className="text-3xl font-bold text-orange-700 mb-6"> Joke App</h1>
-      <div className="bg-white shadow-lg rounded-xl p-6 w-full sm:w-96">
-        <p className="text-lg text-gray-800 mb-6">{joke.setup} - {joke.punchline}</p>
-        <button
-          onClick={fetchJoke}
-          className="px-6 py-2 bg-orange-600 text-white rounded-lg font-medium hover:bg-orange-700 transition-colors"
-        >
-          Get Another Joke
-        </button>
+      <div className="flex flex-col items-center justify-center min-h-[84.5vh] bg-[var(--bg)] text-[var(--text)] text-center p-6 transition-all">
+        
+        <h1 className="text-3xl font-bold mb-6 text-orange-600 dark:text-orange-400">
+          Joke App
+        </h1>
+
+        <div className="bg-[var(--bg)] border border-gray-300 dark:border-gray-700 shadow-lg rounded-xl p-6 w-full sm:w-96 transition-all">
+          <p className="text-lg mb-6 text-gray-800 dark:text-gray-200">
+            {joke.setup} — {joke.punchline}
+          </p>
+
+          <button
+            onClick={fetchJoke}
+            className="
+              px-6 py-2 rounded-lg font-medium transition-colors 
+              bg-orange-600 text-white hover:bg-orange-700
+              dark:bg-orange-500 dark:hover:bg-orange-600
+            "
+          >
+            Get Another Joke
+          </button>
+        </div>
+
+        {error && <p className="mt-4 text-red-600 dark:text-red-400">{error}</p>}
       </div>
-      {
-        error && <p>{error}</p>
-    }
-    </div>
     </Layout>
   );
 }

@@ -20,14 +20,25 @@ export default function DigitalClock() {
 
   return (
     <Layout>
-      <div className="flex items-center justify-center min-h-[84.50vh] bg-gradient-to-r from-blue-100 to-green-100">
+      <div className="flex items-center justify-center min-h-[84.50vh] bg-[var(--bg)] text-[var(--text)]">
         <div
-          className="text-6xl font-bold text-blue-700 bg-white shadow-2xl rounded-3xl px-12 py-8 
-                     hover:scale-110 transition-transform duration-500 text-center"
+          className="
+            shadow-2xl rounded-3xl px-12 py-8 text-center 
+            bg-[var(--bg)] border border-gray-300 dark:border-gray-700
+            transition-transform duration-500 hover:scale-110
+          "
         >
-          <p className="text-green-600 text-2xl mb-2 animate-pulse">Digital Clock</p>
-          <p>{time}</p>
-          <p className="text-gray-500 text-xl mt-2">{date}</p>
+          <p className="text-2xl mb-2 font-semibold animate-pulse text-blue-600 dark:text-blue-400">
+            Digital Clock
+          </p>
+
+          <p className="text-6xl font-bold text-green-600 dark:text-green-400">
+            {time}
+          </p>
+
+          <p className="text-xl mt-2 text-gray-600 dark:text-gray-400">
+            {date}
+          </p>
         </div>
       </div>
     </Layout>
