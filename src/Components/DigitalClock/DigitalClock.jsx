@@ -1,9 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Layout from "../Layout/Layout";
+import { themeContext } from "../../App";
 
 export default function DigitalClock() {
   const [time, setTime] = useState("");
   const [date, setDate] = useState("");
+
+  const { theme } = useContext(themeContext);
+  const isDark = theme === "dark";
 
   useEffect(() => {
     const updateClock = () => {
@@ -20,11 +24,13 @@ export default function DigitalClock() {
 
   return (
     <Layout>
-      <div className="flex items-center justify-center min-h-[84.50vh] bg-[var(--bg)] text-[var(--text)]">
+      <div
+        className={`flex items-center justify-center min-h-[calc(100vh-64px)] 
+        ${isDark ? "bg-gray-900" : "bg-bgColor"}`}
+      >
         <div
           className="
-            shadow-2xl rounded-3xl px-12 py-8 text-center 
-            bg-[var(--bg)] border border-gray-300 dark:border-gray-700
+            shadow-2xl rounded-3xl px-12 py-8 text-center border border-gray-300 dark:border-gray-700
             transition-transform duration-500 hover:scale-110
           "
         >

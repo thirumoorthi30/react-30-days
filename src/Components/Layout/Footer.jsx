@@ -1,13 +1,19 @@
 import React, { useContext } from "react";
-// import { userContext } from "../../App";
+import { themeContext } from "../../App";
 
-function Footer() {
-  // let {user} =useContext(userContext);
+export default function Footer() {
+  const { theme } = useContext(themeContext);
+  const isDark = theme === "dark";
+
   return (
-    <footer className="py-3 text-center bg-[var(--bg)] text-[var(--text)] border-t border-gray-300 dark:border-gray-700">
+    <footer
+      className={`py-3 text-center border-t ${
+        isDark
+          ? "bg-gray-900 text-white border-gray-700"
+          : "bg-gray-100 text-black border-gray-300"
+      }`}
+    >
       <h3 className="text-sm font-semibold">© 2025 All Rights Reserved</h3>
     </footer>
   );
 }
-
-export default Footer;

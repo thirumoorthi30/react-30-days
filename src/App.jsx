@@ -16,7 +16,6 @@ import UpdateProduct from "./Components/Products/UpdateProduct";
 import Login from "./Components/Auth/Login";
 import Signup from "./Components/Auth/Signup";
 import Weather from "./Components/Weather/Weather";
-import {ThemeProvider} from "./Hook/ThemeProvider";
 
 export const userContext = createContext();
 export const themeContext = createContext();
@@ -29,21 +28,15 @@ function AppContent() {
     phone: "123-456-7890"
   });
 
-   const [theme, setTheme] = useState("light");
+  const [theme, setTheme] = useState("light");
   const navigate = useNavigate();
 
   const toggleTheme = () => {
-    setTheme( (prev) => (prev === "light" ? "dark" : "light") )
-  }
-
-  const handleLogin = (email) => {
-    setUser({ email});
+    setTheme(prev => (prev === "light" ? "dark" : "light"));
   };
 
-  const handleSignup = (email) => {
-    setUser({ email}); 
-  };
-
+  const handleLogin = (email) => setUser({ email });
+  const handleSignup = (email) => setUser({ email });
   const handleLogout = () => {
     setUser(null);
     navigate("/login");
@@ -53,35 +46,35 @@ function AppContent() {
 
   return (
     <userContext.Provider value={{ user, handleLogin, handleSignup, handleLogout }}>
-      <themeContext.Provider value = {{theme, toggleTheme}}>
-      {isAuth && <NavBar />}
-      <Routes>
-        {!isAuth ? (
-          <>
-            <Route path="/login" element={<Login />} />
-            <Route path="/signup" element={<Signup />} />
-          </>
-        ) : (
-          <>
-            <Route path="/" element={<Home />} />
-            <Route path="/profile-card" element={<ProfileCardPage />} />
-            <Route path="/counter-app" element={<CounterApp />} />
-            <Route path="/practice-app/:name" element={<Practice />} />
-            <Route path="/todo-list" element={<TodoList />} />
-            <Route path="/product" element={<Product />}>
-              <Route index element={<ProductList />} />
-              <Route path="details" element={<ProductDetails1 />} />
-              <Route path="list" element={<ProductList />} />
-            </Route>
-            <Route path="/new-product" element={<NewProducts />} />
-            <Route path="/update-product/:id" element={<UpdateProduct />} />
-            <Route path="/digital-clock" element={<DigitalClock />} />
-            <Route path="/joke-app" element={<JokeApp />} />
-            <Route path="/weather-app" element={<Weather />} />
-            <Route path="*" element={<Navigate to="/" />} />
-          </>
-        )}
-      </Routes>
+      <themeContext.Provider value={{ theme, toggleTheme }}>
+        {isAuth && <NavBar />}
+        <Routes>
+          {!isAuth ? (
+            <>
+              <Route path="/login" element={<Login />} />
+              <Route path="/signup" element={<Signup />} />
+            </>
+          ) : (
+            <>
+              <Route path="/" element={<Home />} />
+              <Route path="/profile-card" element={<ProfileCardPage />} />
+              <Route path="/counter-app" element={<CounterApp />} />
+              <Route path="/practice-app/:name" element={<Practice />} />
+              <Route path="/todo-list" element={<TodoList />} />
+              <Route path="/product" element={<Product />}>
+                <Route index element={<ProductList />} />
+                <Route path="details" element={<ProductDetails1 />} />
+                <Route path="list" element={<ProductList />} />
+              </Route>
+              <Route path="/new-product" element={<NewProducts />} />
+              <Route path="/update-product/:id" element={<UpdateProduct />} />
+              <Route path="/digital-clock" element={<DigitalClock />} />
+              <Route path="/joke-app" element={<JokeApp />} />
+              <Route path="/weather-app" element={<Weather />} />
+              <Route path="*" element={<Navigate to="/" />} />
+            </>
+          )}
+        </Routes>
       </themeContext.Provider>
     </userContext.Provider>
   );
@@ -90,9 +83,7 @@ function AppContent() {
 export default function App() {
   return (
     <BrowserRouter basename="/react-30days/">
-      <ThemeProvider>
       <AppContent />
-      </ThemeProvider>
     </BrowserRouter>
   );
 }
