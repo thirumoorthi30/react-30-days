@@ -16,6 +16,7 @@ import UpdateProduct from "./Components/Products/UpdateProduct";
 import Login from "./Components/Auth/Login";
 import Signup from "./Components/Auth/Signup";
 import Weather from "./Components/Weather/Weather";
+import {ThemeProvider} from "./Hook/ThemeProvider";
 
 export const userContext = createContext();
 export const themeContext = createContext();
@@ -89,7 +90,9 @@ function AppContent() {
 export default function App() {
   return (
     <BrowserRouter basename="/react-30days/">
+      <ThemeProvider>
       <AppContent />
+      </ThemeProvider>
     </BrowserRouter>
   );
 }
