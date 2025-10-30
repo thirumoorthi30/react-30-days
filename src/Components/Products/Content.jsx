@@ -29,8 +29,8 @@ const Content = () => {
 
 
   return (
-    <main className="flex flex-col items-center justify-center p-8 bg-gray-100 min-h-[60vh]">
-      <h1 className="bg-red-500 text-white px-4 py-2 rounded-lg shadow-lg text-xl font-semibold">
+    <main className="flex flex-col items-center justify-center p-8 bg-bgColor min-h-[60vh]">
+      <h1 className="bg-bgColor text-white px-4 py-2 rounded-lg shadow-lg text-xl font-semibold">
         Content - {user} - {name}
       </h1>
       <button onClick={printSomething}>Click</button>

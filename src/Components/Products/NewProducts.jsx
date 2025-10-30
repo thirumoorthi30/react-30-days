@@ -40,7 +40,7 @@ const NewProducts = () => {
   }
 
   return (
-    <div className="max-w-lg mx-auto bg-white p-6 rounded-lg shadow-md mt-10">
+    <div className="max-w-lg mx-auto bg-bgColor p-6 rounded-lg shadow-md mt-10">
       <h2 className="text-2xl font-semibold mb-4 text-center">Add New Product</h2>
 
       <form onSubmit={handleSubmit} className="space-y-4">

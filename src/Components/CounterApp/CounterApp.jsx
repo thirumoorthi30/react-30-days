@@ -15,17 +15,17 @@ const CounterApp = () => {
 
   return (
     <Layout>
-      <div className="flex flex-col items-center justify-center min-h-[75vh] bg-gradient-to-r from-green-100 to-blue-100">
-        <div className="bg-white shadow-lg rounded-2xl p-8 text-center w-80">
-          <h1 className="text-3xl font-bold text-gray-800 mb-6">Counter App</h1>
+      <div className="flex flex-col items-center justify-center min-h-[75vh] bg-[var(--bg)] text-[var(--text)]">
+        <div className="bg-[var(--bg)] border border-gray-300 dark:border-gray-700 shadow-lg rounded-2xl p-8 text-center w-80 transition-colors">
+          <h1 className="text-3xl font-bold mb-6">Counter App</h1>
 
           <p
             className={`text-5xl font-extrabold mb-8 ${
               count === 0
-                ? "text-gray-400"
+                ? "text-gray-400 dark:text-gray-500"
                 : count === 10
-                ? "text-green-700"
-                : "text-blue-600"
+                ? "text-green-600 dark:text-green-400"
+                : "text-blue-600 dark:text-blue-400"
             }`}
           >
             {count}
@@ -38,21 +38,23 @@ const CounterApp = () => {
               className={`px-6 py-2 font-semibold rounded-lg shadow-md transition-all
                 ${
                   count === 0
-                    ? "bg-red-300 cursor-not-allowed"
-                    : "bg-red-500 hover:bg-red-600 text-white"
+                    ? "bg-red-300 dark:bg-red-800 text-white cursor-not-allowed"
+                    : "bg-red-500 dark:bg-red-600 hover:bg-red-600 dark:hover:bg-red-700 text-white"
                 }`}
             >
               -
             </button>
+
             <button
               onClick={incrementClick}
-              className="px-6 py-2 bg-green-500 text-white font-semibold rounded-lg shadow-md hover:bg-green-600 transition-all"
+              className="px-6 py-2 bg-green-500 dark:bg-green-600 text-white font-semibold rounded-lg shadow-md hover:bg-green-600 dark:hover:bg-green-700 transition-all"
             >
               +
             </button>
+
             <button
               onClick={resetClick}
-              className="px-6 py-2 bg-gray-500 text-white font-semibold rounded-lg shadow-md hover:bg-gray-600 transition-all"
+              className="px-6 py-2 bg-gray-500 dark:bg-gray-600 text-white font-semibold rounded-lg shadow-md hover:bg-gray-600 dark:hover:bg-gray-700 transition-all"
             >
               Reset
             </button>

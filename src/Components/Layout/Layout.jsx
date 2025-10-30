@@ -3,8 +3,8 @@ import Header from "./Header";
 import Footer from "./Footer";
 
 function Layout({ children }) {
-  return (
-<div className="flex flex-col h-auto bg-gray-50">
+   return (
+    <div className="flex flex-col min-h-screen transition-all duration-300 bg-[var(--bg)] text-[var(--text)]">
       {/* <Header /> */}
       <main className="flex-grow">{children}</main>
       <Footer />
