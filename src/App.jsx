@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate, useNavigate } from "react-router-dom";
 import { createContext, useState } from "react";
 import Home from "./Components/Layout/Home";
-import ProfileCardPage from "./Components/Profilepage/ProfileCardPage";
+import ProfileCardPage from "./Components/Profilepage/ProfileCardPage"; 
 import Practice from "./Components/Products/Content";
 import CounterApp from "./Components/CounterApp/CounterApp";
 import TodoList from "./Components/TodoList/TodoList";
@@ -16,6 +16,7 @@ import UpdateProduct from "./Components/Products/UpdateProduct";
 import Login from "./Components/Auth/Login";
 import Signup from "./Components/Auth/Signup";
 import Weather from "./Components/Weather/Weather";
+import Shopping from "./Components/ShoppingCart/Shopping";
 
 export const userContext = createContext();
 export const themeContext = createContext();
@@ -71,6 +72,7 @@ function AppContent() {
               <Route path="/digital-clock" element={<DigitalClock />} />
               <Route path="/joke-app" element={<JokeApp />} />
               <Route path="/weather-app" element={<Weather />} />
+              <Route path="/shoppingcart" element={<Shopping />} />
               <Route path="*" element={<Navigate to="/" />} />
             </>
           )}
